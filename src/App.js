@@ -12,6 +12,9 @@ import AuthRoute from './util/AuthRoute';
 import home from './pages/home';
 import login from './pages/login';
 import signup from './pages/signup';
+//Redux imports
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 const theme = createMuiTheme(customTheme);
 
@@ -31,8 +34,8 @@ if (token) {
 class App extends Component {
   render() {
     return (
-      <MuiThemeProvider theme={theme}>
-        <div className="App">
+      <Provider store={store}>
+        <MuiThemeProvider theme={theme}>
           <Router>
             <Navbar />
             <div className="container">
@@ -43,8 +46,8 @@ class App extends Component {
               </Switch>
             </div>
           </Router>
-        </div>
-      </MuiThemeProvider>
+        </MuiThemeProvider>
+      </Provider>
     );
   }
 }
