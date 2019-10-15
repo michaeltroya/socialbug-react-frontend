@@ -38,7 +38,7 @@ const styles = {
   }
 };
 
-export class login extends Component {
+class login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -62,7 +62,7 @@ export class login extends Component {
     axios
       .post('/login', userData)
       .then(res => {
-        console.log(res.data);
+        localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
         this.setState({
           loading: false
         });
@@ -127,7 +127,7 @@ export class login extends Component {
               Login {loading && <CircularProgress size={30} className={classes.progress} />}
             </Button>
             <div className={classes.signup}>
-              Dont have an account ? <Link to="/signup">Signup here</Link>
+              Dont have an account ?<Link to="/signup">Signup Here</Link>
             </div>
           </form>
         </Grid>
