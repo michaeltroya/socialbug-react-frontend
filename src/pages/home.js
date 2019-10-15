@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
+import Post from '../components/Post';
 
 export class home extends Component {
   state = {
@@ -10,7 +11,6 @@ export class home extends Component {
     axios
       .get(`/posts`)
       .then(res => {
-        console.log(res.data);
         this.setState({
           posts: res.data
         });
@@ -21,7 +21,7 @@ export class home extends Component {
   }
 
   render() {
-    let recentPostsMarkup = this.state.posts ? this.state.posts.map(post => <p>{post.body}</p>) : <p>Loading...</p>;
+    let recentPostsMarkup = this.state.posts ? this.state.posts.map(post => <Post post={post} />) : <p>Loading...</p>;
 
     return (
       <Grid container spacing={6}>

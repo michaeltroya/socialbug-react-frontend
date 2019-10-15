@@ -2,6 +2,7 @@ html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+  background-color: #f0f0f0;
 }
 
 .container {
@@ -12,4 +13,8 @@ body {
 
 .nav-bar {
   margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
 }
