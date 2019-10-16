@@ -17,7 +17,10 @@ import { connect } from 'react-redux';
 import { editUserDetails } from '../redux/actions/userActions';
 
 const styles = theme => ({
-  ...theme.spreadIt
+  ...theme.spreadIt,
+  button: {
+    float: 'right'
+  }
 });
 
 class EditDetails extends Component {
@@ -31,6 +34,13 @@ class EditDetails extends Component {
   componentDidMount = () => {
     const credentials = this.props;
     this.setDetailsToState(credentials);
+  };
+  setDetailsToState = credentials => {
+    this.setState({
+      bio: credentials.bio ? credentials.bio : '',
+      website: credentials.website ? credentials.website : '',
+      location: credentials.location ? credentials.location : ''
+    });
   };
 
   handleOpen = () => {
@@ -60,14 +70,6 @@ class EditDetails extends Component {
     };
     this.props.editUserDetails(userDetails);
     this.handleClose();
-  };
-
-  setDetailsToState = credentials => {
-    this.setState({
-      bio: credentials.bio ? credentials.bio : '',
-      website: credentials.website ? credentials.website : '',
-      location: credentials.location ? credentials.location : ''
-    });
   };
 
   render() {
