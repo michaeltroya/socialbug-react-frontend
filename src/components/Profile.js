@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 import EditDetails from './EditDetails';
+import ToolButton from '../util/ToolButton';
 //Material UI Imports
 import withStyles from '@material-ui/core/styles/withStyles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import MuiLink from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
 //Icon imports
 import LocationOn from '@material-ui/icons/LocationOn';
 import LinkIcon from '@material-ui/icons/Link';
@@ -59,11 +58,9 @@ class Profile extends Component {
             <div className="image-wrapper">
               <img src={imageUrl} alt="profile" className="profile-image" />
               <input type="file" id="imgUpload" onChange={this.handleImageChange} hidden="hidden" />
-              <Tooltip title="Change profile picture" placement="top">
-                <IconButton onClick={this.handleChangePicBtn}>
-                  <EditIcon color="primary" />
-                </IconButton>
-              </Tooltip>
+              <ToolButton tip="Change profile picture" onClick={this.handleChangePicBtn} btnClassName="button">
+                <EditIcon color="primary" />
+              </ToolButton>
             </div>
             <hr />
             <div className="profile-details">
@@ -92,11 +89,9 @@ class Profile extends Component {
               )}
               <CalendarToday color="primary" /> <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
             </div>
-            <Tooltip title="Logout" placement="top">
-              <IconButton onClick={this.handleLogout}>
-                <KeyboardReturn color="primary" />
-              </IconButton>
-            </Tooltip>
+            <ToolButton tip="Logout" onClick={this.handleLogout}>
+              <KeyboardReturn color="primary" />
+            </ToolButton>
             <EditDetails />
           </div>
         </Paper>

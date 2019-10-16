@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import ToolButton from '../util/ToolButton';
 //Material UI Imports
 import withStyles from '@material-ui/core/styles/withStyles';
-import Tooltip from '@material-ui/core/Tooltip';
 import TextField from '@material-ui/core/TextField';
-import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -76,11 +75,9 @@ class EditDetails extends Component {
     const { classes } = this.props;
     return (
       <Fragment>
-        <Tooltip title="Edit details" placement="top">
-          <IconButton onClick={this.handleOpen} className={classes.button}>
-            <EditIcon color="primary" />
-          </IconButton>
-        </Tooltip>
+        <ToolButton tip="Edit details" onClick={this.handleOpen} btnClassName={classes.button}>
+          <EditIcon color="primary" />
+        </ToolButton>
         <Dialog open={this.state.open} onClose={this.handleClose} fullWidth maxWidth="sm">
           <DialogTitle>Edit your details</DialogTitle>
           <DialogContent>
