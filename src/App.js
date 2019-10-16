@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
+// Material UI imports
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import customTheme from './util/theme';
@@ -15,19 +16,22 @@ import signup from './pages/signup';
 //Redux imports
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import { SET_AUTHENTICATED, SET_UNAUTHENTICATED } from './redux/types';
+import { logoutUser, getUserData } from './redux/actions/userActions';
+import axios from 'axios';
 
 const theme = createMuiTheme(customTheme);
-
-let auth;
 
 const token = localStorage.FBIdToken;
 if (token) {
   const decodeToken = jwtDecode(token);
   if (decodeToken.exp * 1000 < Date.now()) {
+    store.dispatch(logoutUser());
     window.location.href = '/login';
-    auth = false;
   } else {
-    auth = true;
+    store.dispatch({ type: SET_AUTHENTICATED });
+    axios.defaults.headers.common['Authorization'] = token;
+    store.dispatch(getUserData());
   }
 }
 
