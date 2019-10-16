@@ -16,7 +16,7 @@ import signup from './pages/signup';
 //Redux imports
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import { SET_AUTHENTICATED, SET_UNAUTHENTICATED } from './redux/types';
+import { SET_AUTHENTICATED } from './redux/types';
 import { logoutUser, getUserData } from './redux/actions/userActions';
 import axios from 'axios';
 
@@ -45,8 +45,8 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={home} />
-                <AuthRoute exact path="/login" component={login} auth={auth} />
-                <AuthRoute exact path="/signup" component={signup} auth={auth} />
+                <AuthRoute exact path="/login" component={login} />
+                <AuthRoute exact path="/signup" component={signup} />
               </Switch>
             </div>
           </Router>

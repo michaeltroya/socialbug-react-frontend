@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Icon from '../images/icon.png';
-import axios from 'axios';
 import { Link } from 'react-router-dom/';
 //Material UI imports
 import TextField from '@material-ui/core/TextField';
