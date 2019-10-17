@@ -6,9 +6,37 @@ export const getPosts = () => dispatch => {
   axios
     .get('/posts')
     .then(res => {
-      dispatch({ type: SET_POSTS, payload: res.data });
+      dispatch({
+        type: SET_POSTS,
+        payload: res.data
+      });
     })
     .catch(err => {
-      dispatch({ type: SET_POSTS, payload: {} });
+      dispatch({
+        type: SET_POSTS,
+        payload: []
+      });
+    });
+};
+
+export const likePost = postId => dispatch => {
+  axios
+    .get(`/posts/${postId}/like`)
+    .then(res => {
+      dispatch({ type: LIKE_POST, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const unlikePost = postId => dispatch => {
+  axios
+    .get(`/posts/${postId}/unlike`)
+    .then(res => {
+      dispatch({ type: UNLIKE_POST, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
     });
 };
