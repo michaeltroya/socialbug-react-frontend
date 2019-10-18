@@ -35,7 +35,7 @@ const styles = {
 
 export class Post extends Component {
   likedPost = () => {
-    if (this.props.user.likes && this.props.user.likes.find(like => like.PostId === this.props.post.PostId)) return true;
+    if (this.props.user.likes && this.props.user.likes.find(like => like.postId === this.props.post.postId)) return true;
     else return false;
   };
 
@@ -72,6 +72,8 @@ export class Post extends Component {
       </ToolButton>
     );
 
+    const likeOrLikes = likeCount == 1 ? 'like' : 'likes';
+
     return (
       <div>
         <Card className={classes.card}>
@@ -85,7 +87,9 @@ export class Post extends Component {
             </Typography>
             <Typography variant="body1">{body}</Typography>
             {likeButton}
-            <span></span>
+            <span>
+              {likeCount} {likeOrLikes}
+            </span>
             <ToolButton tip="comments">
               <ChatIcon color="primary" />
             </ToolButton>
