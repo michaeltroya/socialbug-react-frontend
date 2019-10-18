@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 // Material UI imports
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import MuiThemeProvider from '@material-ui/styles/ThemeProvider';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import customTheme from './util/theme';
 import jwtDecode from 'jwt-decode';

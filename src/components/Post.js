@@ -35,23 +35,21 @@ const styles = {
 
 export class Post extends Component {
   likedPost = () => {
-    if (this.props.user.likes && this.props.user.likes.find(like => like.postId === this.props.post.postId)) {
-      return true;
-    } else {
-      return false;
-    }
+    if (this.props.user.likes && this.props.user.likes.find(like => like.PostId === this.props.post.PostId)) return true;
+    else return false;
   };
 
-  likePost = () => {
+  likeThePost = () => {
     this.props.likePost(this.props.post.postId);
   };
 
-  unlikePost = () => {
+  unlikeThePost = () => {
     this.props.unlikePost(this.props.post.postId);
   };
 
   render() {
     dayjs.extend(relativeTime);
+
     const {
       classes,
       post: { body, createdAt, userImage, userHandle, postId, likeCount, commentCount },
@@ -59,17 +57,17 @@ export class Post extends Component {
     } = this.props;
 
     const likeButton = !authenticated ? (
-      <ToolButton tip="Like">
-        <Link to="/login">
+      <Link to="/login">
+        <ToolButton tip="Like">
           <FavoriteBorder color="primary" />
-        </Link>
-      </ToolButton>
+        </ToolButton>
+      </Link>
     ) : this.likedPost() ? (
-      <ToolButton tip="Unlike" onClick={this.unlikePost}>
+      <ToolButton tip="Undo like" onClick={this.unlikeThePost}>
         <FavoriteIcon color="primary" />
       </ToolButton>
     ) : (
-      <ToolButton tip="Like" onClick={this.likePost}>
+      <ToolButton tip="Like" onClick={this.likeThePost}>
         <FavoriteBorder color="primary" />
       </ToolButton>
     );
@@ -87,9 +85,9 @@ export class Post extends Component {
             </Typography>
             <Typography variant="body1">{body}</Typography>
             {likeButton}
-            <span>{likeCount} Likes</span>
+            <span></span>
             <ToolButton tip="comments">
-              <ChatIcon color="primary " />
+              <ChatIcon color="primary" />
             </ToolButton>
           </CardContent>
         </Card>

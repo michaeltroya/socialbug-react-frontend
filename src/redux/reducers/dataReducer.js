@@ -1,4 +1,4 @@
-import { SET_POST, LIKE_POST, UNLIKE_POST, LOADING_DATA, SET_POSTS } from '../types';
+import { LIKE_POST, UNLIKE_POST, LOADING_DATA, SET_POSTS } from '../types';
 
 const initialState = {
   posts: [],
