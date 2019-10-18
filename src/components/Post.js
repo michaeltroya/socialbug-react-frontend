@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom/';
 import ToolButton from '../util/ToolButton';
+import DeletePost from './DeletePost';
 //Dayjs imports
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -53,7 +54,10 @@ export class Post extends Component {
     const {
       classes,
       post: { body, createdAt, userImage, userHandle, postId, likeCount, commentCount },
-      user: { authenticated }
+      user: {
+        authenticated,
+        credentials: { handle }
+      }
     } = this.props;
 
     const likeButton = !authenticated ? (
@@ -63,7 +67,7 @@ export class Post extends Component {
         </ToolButton>
       </Link>
     ) : this.likedPost() ? (
-      <ToolButton tip="Undo like" onClick={this.unlikeThePost}>
+      <ToolButton tip="Unlike" onClick={this.unlikeThePost}>
         <FavoriteIcon color="primary" />
       </ToolButton>
     ) : (
@@ -74,14 +78,17 @@ export class Post extends Component {
 
     const likeOrLikes = likeCount == 1 ? 'like' : 'likes';
 
+    const deleteButton = authenticated && userHandle === handle ? <DeletePost postId={postId} /> : null;
+
     return (
       <div>
         <Card className={classes.card}>
-          <CardMedia image={userImage} title="Profile Picutre" className={classes.image} />
+          <CardMedia image={userImage} title="Profile Picture" className={classes.image} />
           <CardContent className={classes.content}>
             <Typography variant="h5" color="primary" component={Link} to={`/users/${userHandle}`}>
               {userHandle}
             </Typography>
+            {deleteButton}
             <Typography variant="body2" color="textSecondary">
               {dayjs(createdAt).fromNow()}
             </Typography>
