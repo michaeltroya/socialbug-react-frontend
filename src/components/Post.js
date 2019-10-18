@@ -22,6 +22,7 @@ import { likePost, unlikePost } from '../redux/actions/dataActions';
 
 const styles = {
   card: {
+    position: 'relative',
     display: 'flex',
     marginBottom: '2rem'
   },
@@ -63,16 +64,16 @@ export class Post extends Component {
     const likeButton = !authenticated ? (
       <Link to="/login">
         <ToolButton tip="Like">
-          <FavoriteBorder color="primary" />
+          <FavoriteBorder color="secondary" />
         </ToolButton>
       </Link>
     ) : this.likedPost() ? (
       <ToolButton tip="Unlike" onClick={this.unlikeThePost}>
-        <FavoriteIcon color="primary" />
+        <FavoriteIcon color="secondary" />
       </ToolButton>
     ) : (
       <ToolButton tip="Like" onClick={this.likeThePost}>
-        <FavoriteBorder color="primary" />
+        <FavoriteBorder color="secondary" />
       </ToolButton>
     );
 
@@ -98,7 +99,7 @@ export class Post extends Component {
               {likeCount} {likeOrLikes}
             </span>
             <ToolButton tip="comments">
-              <ChatIcon color="primary" />
+              <ChatIcon color="secondary" />
             </ToolButton>
           </CardContent>
         </Card>
