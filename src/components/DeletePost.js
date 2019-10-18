@@ -12,7 +12,6 @@ import DeleteOutline from '@material-ui/icons/DeleteOutline';
 //Redux imports
 import { connect } from 'react-redux';
 import { deletePost } from '../redux/actions/dataActions';
-import { DialogContent } from '@material-ui/core';
 
 const styles = {};
 

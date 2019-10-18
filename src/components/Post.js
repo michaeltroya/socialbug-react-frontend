@@ -76,7 +76,7 @@ export class Post extends Component {
       </ToolButton>
     );
 
-    const likeOrLikes = likeCount == 1 ? 'like' : 'likes';
+    const likeOrLikes = likeCount === 1 ? 'like' : 'likes';
 
     const deleteButton = authenticated && userHandle === handle ? <DeletePost postId={postId} /> : null;
 
