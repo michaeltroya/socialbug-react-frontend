@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom/';
 import ToolButton from '../util/ToolButton';
 import DeletePost from './DeletePost';
 import PostDialog from './PostDialog';
+import LikePostButton from './LikePostButton';
 //Dayjs imports
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -15,11 +16,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 //Icon imports
 import ChatIcon from '@material-ui/icons/Chat';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 //Redux Imports
 import { connect } from 'react-redux';
-import { likePost, unlikePost } from '../redux/actions/dataActions';
 
 const styles = {
   card: {
@@ -37,19 +35,6 @@ const styles = {
 };
 
 export class Post extends Component {
-  likedPost = () => {
-    if (this.props.user.likes && this.props.user.likes.find(like => like.postId === this.props.post.postId)) return true;
-    else return false;
-  };
-
-  likeThePost = () => {
-    this.props.likePost(this.props.post.postId);
-  };
-
-  unlikeThePost = () => {
-    this.props.unlikePost(this.props.post.postId);
-  };
-
   render() {
     dayjs.extend(relativeTime);
 
@@ -61,22 +46,6 @@ export class Post extends Component {
         credentials: { handle }
       }
     } = this.props;
-
-    const likeButton = !authenticated ? (
-      <Link to="/login">
-        <ToolButton tip="Like">
-          <FavoriteBorder color="secondary" />
-        </ToolButton>
-      </Link>
-    ) : this.likedPost() ? (
-      <ToolButton tip="Unlike" onClick={this.unlikeThePost}>
-        <FavoriteIcon color="secondary" />
-      </ToolButton>
-    ) : (
-      <ToolButton tip="Like" onClick={this.likeThePost}>
-        <FavoriteBorder color="secondary" />
-      </ToolButton>
-    );
 
     const likeOrLikes = likeCount === 1 ? 'like' : 'likes';
 
@@ -95,7 +64,7 @@ export class Post extends Component {
               {dayjs(createdAt).fromNow()}
             </Typography>
             <Typography variant="body1">{body}</Typography>
-            {likeButton}
+            <LikePostButton postId={postId} />
             <span>
               {likeCount} {likeOrLikes}
             </span>
@@ -115,17 +84,10 @@ const mapStateToProps = state => ({
   user: state.user
 });
 
-const mapActionsToProps = { likePost, unlikePost };
-
 Post.propTypes = {
   user: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
-  likePost: PropTypes.func.isRequired,
-  unlikePost: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired
 };
 
-export default connect(
-  mapStateToProps,
-  mapActionsToProps
-)(withStyles(styles)(Post));
+export default connect(mapStateToProps)(withStyles(styles)(Post));

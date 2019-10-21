@@ -32,7 +32,23 @@ const styles = theme => ({
   profilePic: {
     position: 'relative',
     width: '100%',
-    marginBottom: '1rem'
+    borderRadius: '50%'
+  },
+  dialogContent: {
+    padding: '1rem'
+  },
+  closeButton: {
+    position: 'absolute',
+    right: 0,
+    top: 0
+  },
+  expandButton: {
+    position: 'absolute',
+    right: '0',
+    bottom: '0'
+  },
+  spinner: {
+    textAlign: 'center'
   }
 });
 
@@ -62,13 +78,15 @@ class PostDialog extends Component {
     } = this.props;
 
     const dialogMarkup = loading ? (
-      <CircularProgress size={200}></CircularProgress>
+      <div className={classes.spinner}>
+        <CircularProgress size={200}></CircularProgress>
+      </div>
     ) : (
-      <Grid container spacing={16}>
-        <Grid item sm={12}>
+      <Grid container spacing={3} direction="row" justify="center" alignItems="center">
+        <Grid item sm={5}>
           <img src={userImage} alt="Profile" className={classes.profilePic} />
         </Grid>
-        <Grid item sm={12}>
+        <Grid item sm={7}>
           <Typography component={Link} color="secondary" variant="h5" to={`/users/${userHandle}`}>
             @{userHandle}
           </Typography>
@@ -83,11 +101,10 @@ class PostDialog extends Component {
     );
     return (
       <Fragment>
-        <ToolButton onClick={this.handleOpen} tip="Expand post" tipClassName={classes.expandButton}>
+        <ToolButton onClick={this.handleOpen} tip="View details" tipClassName={classes.expandButton}>
           <UnfoldMore />
         </ToolButton>
         <Dialog open={this.state.open} onClose={this.handleClose} fullWidth maxWidth="sm">
-          <DialogTitle></DialogTitle>
           <DialogContent className={classes.dialogContent}>{dialogMarkup}</DialogContent>
           <ToolButton tip="Close" onClick={this.handleClose} tipClassName={classes.closeButton}>
             <CloseIcon />
