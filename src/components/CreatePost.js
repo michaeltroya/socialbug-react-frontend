@@ -16,13 +16,14 @@ import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 //Redux Imports
 import { connect } from 'react-redux';
-import { createPost } from '../redux/actions/dataActions';
+import { createPost, clearErrors } from '../redux/actions/dataActions';
 
 const styles = theme => ({
   ...theme.spreadIt,
   submitButton: {
     position: 'relative',
-    margin: '1rem 0'
+    margin: '1rem 0',
+    float: 'right'
   },
   progressSpinner: {
     position: 'absolute'
@@ -48,8 +49,7 @@ class CreatePost extends Component {
       });
     }
     if (!nextProps.UI.errors && !nextProps.UI.loading) {
-      this.setState({ body: '', errors: {} });
-      this.handleClose();
+      this.setState({ body: '', errors: {}, open: false });
     }
   }
 
@@ -60,6 +60,7 @@ class CreatePost extends Component {
   };
 
   handleClose = () => {
+    this.props.clearErrors();
     this.setState({
       open: false,
       errors: {}
@@ -122,7 +123,8 @@ class CreatePost extends Component {
 }
 CreatePost.propTypes = {
   UI: PropTypes.object.isRequired,
-  createPost: PropTypes.func.isRequired
+  createPost: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -131,5 +133,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { createPost }
+  { createPost, clearErrors }
 )(withStyles(styles)(CreatePost));
