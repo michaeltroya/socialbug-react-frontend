@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom/';
 import ToolButton from '../util/ToolButton';
+import LikePostButton from './LikePostButton';
 //Material UI imports
 import withStyles from '@material-ui/core/styles/withStyles';
 import Button from '@material-ui/core/Button';
@@ -16,6 +17,7 @@ import Typography from '@material-ui/core/Typography';
 //icon imports
 import CloseIcon from '@material-ui/icons/Close';
 import UnfoldMore from '@material-ui/icons/UnfoldMore';
+import ChatIcon from '@material-ui/icons/Chat';
 //Dayjs imports
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -77,6 +79,8 @@ class PostDialog extends Component {
       UI: { loading }
     } = this.props;
 
+    let likeOrLikes;
+
     const dialogMarkup = loading ? (
       <div className={classes.spinner}>
         <CircularProgress size={200}></CircularProgress>
@@ -96,6 +100,14 @@ class PostDialog extends Component {
           </Typography>
           <hr className={classes.inSeparator} />
           <Typography variant="body1">{body}</Typography>
+          <LikePostButton postId={postId} />
+          <span>
+            {likeCount} {(likeOrLikes = likeCount === 1 ? 'like' : 'likes')}
+          </span>
+          <ToolButton tip="comments">
+            <ChatIcon color="secondary" />
+          </ToolButton>
+          <span>{commentCount} comments</span>
         </Grid>
       </Grid>
     );
