@@ -4,6 +4,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom/';
 import ToolButton from '../util/ToolButton';
 import DeletePost from './DeletePost';
+import PostDialog from './PostDialog';
 //Dayjs imports
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -101,6 +102,8 @@ export class Post extends Component {
             <ToolButton tip="comments">
               <ChatIcon color="secondary" />
             </ToolButton>
+            <span>{commentCount} comments</span>
+            <PostDialog postId={postId} userHandle={userHandle} />
           </CardContent>
         </Card>
       </div>
