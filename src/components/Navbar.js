@@ -12,6 +12,7 @@ import AddIcon from '@material-ui/icons/Add';
 import HomeIcon from '@material-ui/icons/Home';
 //Redux Imports
 import { connect } from 'react-redux';
+import CreatePost from './CreatePost';
 
 export class Navbar extends Component {
   render() {
@@ -21,9 +22,7 @@ export class Navbar extends Component {
         <ToolBar className="nav-bar">
           {authenticated ? (
             <Fragment>
-              <ToolButton tip="Create a post!">
-                <AddIcon color="secondary" />
-              </ToolButton>
+              <CreatePost />
               <Link to="/">
                 <ToolButton tip="Home">
                   <HomeIcon color="secondary" />

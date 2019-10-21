@@ -9,6 +9,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+
 //Icon imports
 import EditIcon from '@material-ui/icons/Edit';
 //Redux Imports
@@ -19,6 +20,9 @@ const styles = theme => ({
   ...theme.spreadIt,
   button: {
     float: 'right'
+  },
+  submitButton: {
+    margin: '1rem 0'
   }
 });
 
@@ -120,7 +124,7 @@ class EditDetails extends Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleSubmit} color="primary">
+            <Button onClick={this.handleSubmit} color="secondary" className={classes.submitButton}>
               Save changes
             </Button>
           </DialogActions>
