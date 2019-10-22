@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom/';
-import ToolButton from '../util/ToolButton';
+import ToolButton from '../../util/ToolButton';
 import DeletePost from './DeletePost';
 import PostDialog from './PostDialog';
 import LikePostButton from './LikePostButton';

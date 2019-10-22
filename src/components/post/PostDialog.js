@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom/';
-import ToolButton from '../util/ToolButton';
+import ToolButton from '../../util/ToolButton';
 import LikePostButton from './LikePostButton';
 //Material UI imports
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -23,7 +23,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 //Redux Imports
 import { connect } from 'react-redux';
-import { getPost } from '../redux/actions/dataActions';
+import { getPost } from '../../redux/actions/dataActions';
 
 const styles = theme => ({
   ...theme.spreadIt,

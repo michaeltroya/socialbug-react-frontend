@@ -76,7 +76,7 @@ export default {
           verticalAlign: 'middle'
         },
         '& a': {
-          color: '#00bcd4'
+          color: '#32cb00'
         }
       },
       '& hr': {

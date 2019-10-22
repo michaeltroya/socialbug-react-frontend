@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom/';
 import PropTypes from 'prop-types';
-import ToolButton from '../util/ToolButton';
+import ToolButton from '../../util/ToolButton';
 //Material UI Imports
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/Toolbar';
@@ -12,7 +12,7 @@ import AddIcon from '@material-ui/icons/Add';
 import HomeIcon from '@material-ui/icons/Home';
 //Redux Imports
 import { connect } from 'react-redux';
-import CreatePost from './CreatePost';
+import CreatePost from '../post/CreatePost';
 
 export class Navbar extends Component {
   render() {

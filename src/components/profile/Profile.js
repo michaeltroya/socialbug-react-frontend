@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 import EditDetails from './EditDetails';
-import ToolButton from '../util/ToolButton';
+import ToolButton from '../../util/ToolButton';
 //Material UI Imports
 import withStyles from '@material-ui/core/styles/withStyles';
 import Button from '@material-ui/core/Button';
@@ -18,7 +18,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
 //Redux Imports
 import { connect } from 'react-redux';
-import { logoutUser, uploadImage } from '../redux/actions/userActions';
+import { logoutUser, uploadImage } from '../../redux/actions/userActions';
 
 const styles = theme => ({
   ...theme.spreadIt
@@ -64,7 +64,7 @@ class Profile extends Component {
             </div>
             <hr />
             <div className="profile-details">
-              <MuiLink component={Link} to={`/users/${handle}`} color="primary" variant="h5">
+              <MuiLink component={Link} to={`/users/${handle}`} color="secondary" variant="h5">
                 @{handle}
               </MuiLink>
               <hr />
@@ -79,7 +79,7 @@ class Profile extends Component {
               )}
               {website && (
                 <Fragment>
-                  <LinkIcon color="primary" />
+                  <LinkIcon />
                   <a href={website} target="_blank" rel="noopener noreferrer">
                     {'  '}
                     {website}
