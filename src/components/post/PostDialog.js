@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom/';
 import ToolButton from '../../util/ToolButton';
 import LikePostButton from './LikePostButton';
 import Comments from './Comments';
+import CommentForm from './CommentForm';
 //Material UI imports
 import withStyles from '@material-ui/core/styles/withStyles';
 import Dialog from '@material-ui/core/Dialog';
@@ -105,6 +106,7 @@ class PostDialog extends Component {
           </Grid>
         </Grid>
         {commentCount > 0 && <hr className={classes.separator} />}
+        <CommentForm postId={postId} />
         <Comments comments={comments} />
       </Fragment>
     );

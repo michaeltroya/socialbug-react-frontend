@@ -9,7 +9,8 @@ import {
   CREATE_POST,
   CLEAR_ERRORS,
   LOADING_UI,
-  STOP_LOADING_UI
+  STOP_LOADING_UI,
+  SUBMIT_COMMENT
 } from '../types';
 import axios from 'axios';
 
@@ -64,6 +65,15 @@ export const createPost = newPost => dispatch => {
     });
 };
 
+export const deletePost = postId => dispatch => {
+  axios
+    .delete(`/post/${postId}`)
+    .then(() => {
+      dispatch({ type: DELETE_POST, payload: postId });
+    })
+    .catch(err => console.log(err));
+};
+
 export const likePost = postId => dispatch => {
   axios
     .get(`/post/${postId}/like`)
@@ -88,13 +98,22 @@ export const unlikePost = postId => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const deletePost = postId => dispatch => {
+export const submitComment = (postId, commentData) => dispatch => {
   axios
-    .delete(`/post/${postId}`)
-    .then(() => {
-      dispatch({ type: DELETE_POST, payload: postId });
+    .post(`/post/${postId}/comment`, commentData)
+    .then(res => {
+      dispatch({
+        type: SUBMIT_COMMENT,
+        payload: res.data
+      });
+      dispatch(clearErrors());
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data
+      });
+    });
 };
 
 export const clearErrors = () => dispatch => {
