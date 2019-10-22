@@ -2,12 +2,12 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom/';
 import PropTypes from 'prop-types';
 import ToolButton from '../../util/ToolButton';
+import Notifications from './Notifications';
 //Material UI Imports
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 //Material Icon imports
-import Notifications from '@material-ui/icons/Notifications';
 import HomeIcon from '@material-ui/icons/Home';
 //Redux Imports
 import { connect } from 'react-redux';
@@ -27,9 +27,7 @@ export class Navbar extends Component {
                   <HomeIcon color="secondary" />
                 </ToolButton>
               </Link>
-              <ToolButton tip="Notifications">
-                <Notifications color="secondary" />
-              </ToolButton>
+              <Notifications />
             </Fragment>
           ) : (
             <Fragment>
