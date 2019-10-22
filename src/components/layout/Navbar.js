@@ -8,7 +8,6 @@ import ToolBar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 //Material Icon imports
 import Notifications from '@material-ui/icons/Notifications';
-import AddIcon from '@material-ui/icons/Add';
 import HomeIcon from '@material-ui/icons/Home';
 //Redux Imports
 import { connect } from 'react-redux';

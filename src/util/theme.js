@@ -41,11 +41,11 @@ export default {
       fontSize: '.8rem',
       marginTop: '1rem'
     },
-    invisibleSeparator: {
+    clearSeparator: {
       border: 'none',
       margin: 4
     },
-    visibleSeparator: {
+    separator: {
       width: '100%',
       borderBottom: '1px solid rgba(0,0,0,0.1)',
       marginBottom: 20

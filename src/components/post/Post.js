@@ -37,7 +37,6 @@ const styles = {
 export class Post extends Component {
   render() {
     dayjs.extend(relativeTime);
-
     const {
       classes,
       post: { body, createdAt, userImage, userHandle, postId, likeCount, commentCount },

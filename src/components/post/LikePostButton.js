@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom/';
 import ToolButton from '../../util/ToolButton';
-import withStyles from '@material-ui/core/styles/withStyles';
 //Icon imports
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
