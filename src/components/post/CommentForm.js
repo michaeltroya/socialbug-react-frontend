@@ -10,7 +10,13 @@ import { connect } from 'react-redux';
 import { submitComment } from '../../redux/actions/dataActions';
 
 const styles = theme => ({
-  ...theme.spreadIt
+  ...theme.spreadIt,
+  commentForm: {
+    textAlign: 'center'
+  },
+  submitButton: {
+    margin: '2rem 0 1rem'
+  }
 });
 
 class CommentForm extends Component {
@@ -24,6 +30,9 @@ class CommentForm extends Component {
       this.setState({
         errors: nextProps.UI.errors
       });
+    }
+    if (!nextProps.UI.errors && !nextProps.UI.loading) {
+      this.setState({ body: '' });
     }
   }
 
@@ -44,12 +53,12 @@ class CommentForm extends Component {
     const commentFormMarkup = authenticated ? (
       <Grid container justify="center">
         <Grid item sm={12}>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit} className={classes.commentForm}>
             <TextField
               name="body"
               type="text"
               label="Comment on a post"
-              error={errors.commment ? true : false}
+              error={errors.comment ? true : false}
               helperText={errors.comment}
               value={this.state.body}
               onChange={this.handleChange}
@@ -57,10 +66,11 @@ class CommentForm extends Component {
               className={classes.TextField}
             />
 
-            <Button type="submit" variant="contained" color="primary" className={classes.Button}>
+            <Button type="submit" variant="contained" color="primary" className={classes.submitButton}>
               Submit
             </Button>
           </form>
+          <hr className={classes.separator} />
         </Grid>
       </Grid>
     ) : null;

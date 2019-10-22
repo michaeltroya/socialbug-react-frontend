@@ -20,7 +20,7 @@ import ChatIcon from '@material-ui/icons/Chat';
 import dayjs from 'dayjs';
 //Redux Imports
 import { connect } from 'react-redux';
-import { getPost } from '../../redux/actions/dataActions';
+import { getPost, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = theme => ({
   ...theme.spreadIt,
@@ -64,6 +64,7 @@ class PostDialog extends Component {
     this.setState({
       open: false
     });
+    this.props.clearErrors();
   };
 
   render() {
@@ -105,7 +106,7 @@ class PostDialog extends Component {
             <span>{commentCount} comments</span>
           </Grid>
         </Grid>
-        {commentCount > 0 && <hr className={classes.separator} />}
+
         <CommentForm postId={postId} />
         <Comments comments={comments} />
       </Fragment>
@@ -130,6 +131,7 @@ PostDialog.propTypes = {
   postId: PropTypes.string.isRequired,
   userHandle: PropTypes.string.isRequired,
   getPost: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired
 };
@@ -140,7 +142,8 @@ const mapStateToProps = state => ({
 });
 
 const mapActionsToProps = {
-  getPost
+  getPost,
+  clearErrors
 };
 
 export default connect(
