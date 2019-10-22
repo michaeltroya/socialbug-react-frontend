@@ -21,30 +21,28 @@ class Comments extends Component {
     const { comments, classes } = this.props;
     return (
       <Grid container>
-        {comments.map(comment => {
+        {comments.map((comment, index) => {
           const { body, createdAt, userHandle, userImage } = comment;
           return (
             <Fragment key={createdAt}>
-              <Grid item sm={12}>
-                <Grid container spacing={3} direction="row" justify="center" alignItems="center">
-                  <Grid item sm={2}>
-                    <img src={userImage} alt="Profile" className={classes.commentImage} />
-                  </Grid>
-                  <Grid item sm={8}>
-                    <div className={classes.commentData}>
-                      <Typography variant="h5" component={Link} to={`/users/${userHandle}`} color="secondary">
-                        @{userHandle}
-                      </Typography>
-                      <Typography variant="body2" color="text-secondary">
-                        {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
-                      </Typography>
-                      <hr className={classes.clearSeparator} />
-                      <Typography variant="body1">{body}</Typography>
-                    </div>
-                  </Grid>
+              <Grid container spacing={3} direction="row" justify="center" alignItems="center">
+                <Grid item sm={2}>
+                  <img src={userImage} alt="Profile" className={classes.commentImage} />
+                </Grid>
+                <Grid item sm={9}>
+                  <div className={classes.commentData}>
+                    <Typography variant="h5" component={Link} to={`/users/${userHandle}`} color="secondary">
+                      @{userHandle}
+                    </Typography>
+                    <Typography variant="body2" color="text-secondary">
+                      {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
+                    </Typography>
+                    <hr className={classes.clearSeparator} />
+                    <Typography variant="body1">{body}</Typography>
+                  </div>
                 </Grid>
               </Grid>
-              <hr className={classes.separator} />
+              {index !== comments.length - 1 && <hr className={classes.separator} />}
             </Fragment>
           );
         })}

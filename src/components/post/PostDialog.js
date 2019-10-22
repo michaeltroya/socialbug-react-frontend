@@ -26,10 +26,11 @@ const styles = theme => ({
   profilePic: {
     position: 'relative',
     width: '100%',
-    borderRadius: '50%'
+    borderRadius: '50%',
+    margin: '0 0 1rem 0'
   },
   dialogContent: {
-    padding: '1rem'
+    padding: '1rem !important'
   },
   closeButton: {
     position: 'absolute',
@@ -78,32 +79,34 @@ class PostDialog extends Component {
         <CircularProgress size={200}></CircularProgress>
       </div>
     ) : (
-      <Grid container spacing={3} direction="row" justify="center" alignItems="center">
-        <Grid item sm={5}>
-          <img src={userImage} alt="Profile" className={classes.profilePic} />
+      <Fragment>
+        <Grid container spacing={3} direction="row" justify="center" alignItems="center">
+          <Grid item sm={5}>
+            <img src={userImage} alt="Profile" className={classes.profilePic} />
+          </Grid>
+          <Grid item sm={7}>
+            <Typography component={Link} color="secondary" variant="h5" to={`/users/${userHandle}`}>
+              @{userHandle}
+            </Typography>
+            <hr className={classes.clearSeparator} />
+            <Typography variant="body2" color="textSecondary">
+              {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
+            </Typography>
+            <hr className={classes.clearSeparator} />
+            <Typography variant="body1">{body}</Typography>
+            <LikePostButton postId={postId} />
+            <span>
+              {likeCount} {(likeOrLikes = likeCount === 1 ? 'like' : 'likes')}
+            </span>
+            <ToolButton tip="comments">
+              <ChatIcon color="secondary" />
+            </ToolButton>
+            <span>{commentCount} comments</span>
+          </Grid>
         </Grid>
-        <Grid item sm={7}>
-          <Typography component={Link} color="secondary" variant="h5" to={`/users/${userHandle}`}>
-            @{userHandle}
-          </Typography>
-          <hr className={classes.clearSeparator} />
-          <Typography variant="body2" color="textSecondary">
-            {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
-          </Typography>
-          <hr className={classes.clearSeparator} />
-          <Typography variant="body1">{body}</Typography>
-          <LikePostButton postId={postId} />
-          <span>
-            {likeCount} {(likeOrLikes = likeCount === 1 ? 'like' : 'likes')}
-          </span>
-          <ToolButton tip="comments">
-            <ChatIcon color="secondary" />
-          </ToolButton>
-          <span>{commentCount} comments</span>
-        </Grid>
-        <hr className={classes.separator} />
+        {commentCount > 0 && <hr className={classes.separator} />}
         <Comments comments={comments} />
-      </Grid>
+      </Fragment>
     );
     return (
       <Fragment>
