@@ -30,10 +30,6 @@ const styles = theme => ({
     position: 'absolute',
     right: 0,
     top: 0
-  },
-  dialogBg: {
-    backgroundColor: '#444444',
-    color: '#fff'
   }
 });
 

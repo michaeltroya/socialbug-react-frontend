@@ -30,6 +30,10 @@ export default {
       flexDirection: 'column',
       padding: '1rem'
     },
+    dialogBg: {
+      backgroundColor: '#444444',
+      color: '#fff'
+    },
     cover: {
       minWidth: 200,
       objectFit: 'cover'
@@ -72,7 +76,8 @@ export default {
       color: '#fff'
     },
     textField: {
-      margin: '.5rem 0'
+      margin: '.5rem 0',
+      color: '#949494 !important'
     },
     button: {
       margin: '2rem 0',

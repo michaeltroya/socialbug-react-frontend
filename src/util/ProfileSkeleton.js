@@ -45,11 +45,11 @@ const ProfileSkeleton = props => {
           <div className={classes.fullLine} />
           <div className={classes.fullLine} />
           <hr />
-          <LocationOn color="primary" /> <span>Location</span>
+          <LocationOn className={classes.greyText} /> <span className={classes.greyText}>Location</span>
           <hr />
-          <LinkIcon color="primary" /> <span>https://website.com</span>
+          <LinkIcon className={classes.greyText} /> <span className={classes.greyText}>https://website.com</span>
           <hr />
-          <CalendarToday color="primary" /> <span>Joined date</span>
+          <CalendarToday className={classes.greyText} /> <span className={classes.greyText}>Joined date</span>
         </div>
       </div>
     </Paper>

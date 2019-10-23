@@ -83,8 +83,8 @@ class EditDetails extends Component {
           <EditIcon color="primary" />
         </ToolButton>
         <Dialog open={this.state.open} onClose={this.handleClose} fullWidth maxWidth="sm">
-          <DialogTitle>Edit your details</DialogTitle>
-          <DialogContent>
+          <DialogTitle className={classes.dialogBg}>Edit your details</DialogTitle>
+          <DialogContent className={classes.dialogBg}>
             <form>
               <TextField
                 name="bio"
@@ -120,7 +120,7 @@ class EditDetails extends Component {
               />
             </form>
           </DialogContent>
-          <DialogActions>
+          <DialogActions className={classes.dialogBg}>
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
