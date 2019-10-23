@@ -23,6 +23,8 @@ import axios from 'axios';
 
 const theme = createMuiTheme(customTheme);
 
+axios.defaults.baseURL = 'https://us-central1-socialbug-bd2eb.cloudfunctions.net/api';
+
 const token = localStorage.FBIdToken;
 if (token) {
   const decodeToken = jwtDecode(token);
