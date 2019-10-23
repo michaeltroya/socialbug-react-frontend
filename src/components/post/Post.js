@@ -23,10 +23,12 @@ const styles = {
   card: {
     position: 'relative',
     display: 'flex',
-    marginBottom: '2rem'
+    marginBottom: '2rem',
+    backgroundColor: '#444444'
   },
   image: {
-    minWidth: 200
+    minWidth: 80,
+    width: 200
   },
   content: {
     padding: '1rem',
@@ -55,8 +57,8 @@ export class Post extends Component {
         <Card className={classes.card}>
           <CardMedia image={userImage} title="Profile Picture" className={classes.image} />
           <CardContent className={classes.content}>
-            <Typography variant="h5" color="primary" component={Link} to={`/users/${userHandle}`}>
-              {userHandle}
+            <Typography variant="h5" color="secondary" component={Link} to={`/users/${userHandle}`}>
+              @{userHandle}
             </Typography>
             {deleteButton}
             <Typography variant="body2" color="textSecondary">

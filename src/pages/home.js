@@ -17,7 +17,7 @@ export class home extends Component {
     const { posts, loading } = this.props.data;
     let recentPostsMarkup = !loading ? posts.map(post => <Post key={post.postId} post={post} />) : <PostSkeleton />;
     return (
-      <Grid container spacing={6}>
+      <Grid container spacing={4}>
         <Grid item sm={8} xs={12}>
           {recentPostsMarkup}
         </Grid>

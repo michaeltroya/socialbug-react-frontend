@@ -9,12 +9,23 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Paper from '@material-ui/core/Paper';
 //Redux Imports
 import { connect } from 'react-redux';
 import { signupUser } from '../redux/actions/userActions';
 
 const styles = theme => ({
-  ...theme.spreadIt
+  ...theme.spreadIt,
+  signupPaper: {
+    backgroundColor: '#444444',
+    padding: '3rem 0'
+  },
+  signupQuestion: {
+    color: 'white',
+    '& a': {
+      color: theme.palette.secondary.main
+    }
+  }
 });
 
 class signup extends Component {
@@ -61,77 +72,79 @@ class signup extends Component {
     } = this.props;
     const { errors } = this.state;
     return (
-      <Grid container className={classes.form}>
-        <Grid item sm></Grid>
-        <Grid item sm>
-          <img src={Icon} alt="Monkey" className={classes.image} />
-          <Typography variant="h2" className={classes.pageTitle}>
-            Signup
-          </Typography>
-          <form noValidate onSubmit={this.handleSubmit}>
-            <TextField
-              id="email"
-              name="email"
-              type="email"
-              label="Email"
-              className={classes.textField}
-              helperText={errors.email}
-              error={errors.email ? true : false}
-              value={this.state.email}
-              onChange={this.handleChange}
-              fullWidth
-            />
-            <TextField
-              id="password"
-              name="password"
-              type="password"
-              label="Password"
-              className={classes.textField}
-              helperText={errors.password}
-              error={errors.password ? true : false}
-              value={this.state.password}
-              onChange={this.handleChange}
-              fullWidth
-            />
-            <TextField
-              id="confirmPassword"
-              name="confirmPassword"
-              type="password"
-              label="Confirm Password"
-              className={classes.textField}
-              helperText={errors.confirmPassword}
-              error={errors.confirmPassword ? true : false}
-              value={this.state.confirmPassword}
-              onChange={this.handleChange}
-              fullWidth
-            />
-            <TextField
-              id="handle"
-              name="handle"
-              type="text"
-              label="Handle"
-              className={classes.textField}
-              helperText={errors.handle}
-              error={errors.handle ? true : false}
-              value={this.state.handle}
-              onChange={this.handleChange}
-              fullWidth
-            />
-            {errors.general && (
-              <Typography variant="body2" className={classes.error}>
-                {errors.general}
-              </Typography>
-            )}
-            <Button type="submit" variant="contained" color="primary" className={classes.button} disabled={loading}>
-              Signup {loading && <CircularProgress size={30} className={classes.progress} />}
-            </Button>
-            <div className={classes.signup}>
-              Already have an account ? <Link to="/login">Login Here</Link>
-            </div>
-          </form>
+      <Paper className={classes.signupPaper}>
+        {' '}
+        <Grid container className={classes.form}>
+          <Grid item sm></Grid>
+          <Grid item sm>
+            <Typography variant="h4" className={classes.pageTitle}>
+              SIGNUP
+            </Typography>
+            <form noValidate onSubmit={this.handleSubmit}>
+              <TextField
+                id="email"
+                name="email"
+                type="email"
+                label="Email"
+                className={classes.textField}
+                helperText={errors.email}
+                error={errors.email ? true : false}
+                value={this.state.email}
+                onChange={this.handleChange}
+                fullWidth
+              />
+              <TextField
+                id="password"
+                name="password"
+                type="password"
+                label="Password"
+                className={classes.textField}
+                helperText={errors.password}
+                error={errors.password ? true : false}
+                value={this.state.password}
+                onChange={this.handleChange}
+                fullWidth
+              />
+              <TextField
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                label="Confirm Password"
+                className={classes.textField}
+                helperText={errors.confirmPassword}
+                error={errors.confirmPassword ? true : false}
+                value={this.state.confirmPassword}
+                onChange={this.handleChange}
+                fullWidth
+              />
+              <TextField
+                id="handle"
+                name="handle"
+                type="text"
+                label="Handle"
+                className={classes.textField}
+                helperText={errors.handle}
+                error={errors.handle ? true : false}
+                value={this.state.handle}
+                onChange={this.handleChange}
+                fullWidth
+              />
+              {errors.general && (
+                <Typography variant="body2" className={classes.error}>
+                  {errors.general}
+                </Typography>
+              )}
+              <Button type="submit" variant="contained" color="secondary" className={classes.button} disabled={loading}>
+                Signup {loading && <CircularProgress size={30} className={classes.progress} />}
+              </Button>
+              <div className={classes.signupQuestion}>
+                Already have an account ? <Link to="/login">Login Here</Link>
+              </div>
+            </form>
+          </Grid>
+          <Grid item sm></Grid>
         </Grid>
-        <Grid item sm></Grid>
-      </Grid>
+      </Paper>
     );
   }
 }

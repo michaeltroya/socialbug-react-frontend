@@ -65,7 +65,7 @@ class Profile extends Component {
             </div>
             <hr />
             <div className="profile-details">
-              <MuiLink component={Link} to={`/users/${handle}`} color="secondary" variant="h5">
+              <MuiLink component={Link} to={`/users/${handle}`} color="primary" variant="h5">
                 @{handle}
               </MuiLink>
               <hr />
@@ -102,7 +102,7 @@ class Profile extends Component {
             Profile not found! Please login.
           </Typography>
           <div className={classes.buttons}>
-            <Button variant="contained" color="primary" component={Link} to="/login">
+            <Button variant="contained" color="secondary" component={Link} to="/login">
               Login
             </Button>
             <Button variant="contained" color="secondary" component={Link} to="/signup">

@@ -1,15 +1,15 @@
 export default {
   palette: {
     primary: {
-      light: '#4f5b62',
-      main: '#263238',
-      dark: '#000a12',
+      light: '#484848',
+      main: '#212121',
+      dark: '#000000',
       contrastText: '#fff'
     },
     secondary: {
-      light: '#b0ff57',
-      main: '#76ff03',
-      dark: '#32cb00',
+      light: '#66ffa6',
+      main: '#00e676',
+      dark: '#00b248',
       contrastText: '#000'
     }
   },
@@ -88,7 +88,8 @@ export default {
       marginBottom: 20
     },
     paper: {
-      padding: 20
+      padding: 20,
+      backgroundColor: '#444444'
     },
     profile: {
       '& .image-wrapper': {
@@ -113,7 +114,7 @@ export default {
           verticalAlign: 'middle'
         },
         '& a': {
-          color: '#32cb00'
+          color: '#00e676'
         }
       },
       '& hr': {
