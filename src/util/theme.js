@@ -14,6 +14,43 @@ export default {
     }
   },
   spreadIt: {
+    card: {
+      display: 'flex',
+      marginBottom: '2rem'
+    },
+    cardContent: {
+      width: '100%',
+      flexDirection: 'column',
+      padding: '1rem'
+    },
+    cover: {
+      minWidth: 200,
+      objectFit: 'cover'
+    },
+    handle: {
+      width: 60,
+      height: 17,
+      backgroundColor: '#76ff03',
+      marginBottom: '.5rem'
+    },
+    date: {
+      width: 85,
+      height: 13,
+      backgroundColor: '#000a12',
+      marginBottom: '.5rem'
+    },
+    fullLine: {
+      width: '90%',
+      height: 15,
+      backgroundColor: '#4f5b62',
+      marginBottom: '.5rem'
+    },
+    halfLine: {
+      width: '40%',
+      height: 15,
+      backgroundColor: '#4f5b62',
+      marginBottom: '.5rem'
+    },
     typography: {
       useNextVariants: true
     },

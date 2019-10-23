@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Post from '../components/post/Post';
 import StaticProfile from '../components/profile/StaticProfile';
 import PostSkeleton from '../util/PostSkeleton';
+import ProfileSkeleton from '../util/ProfileSkeleton';
 //axios imports
 import axios from 'axios';
 //Material UI imports
@@ -64,7 +65,7 @@ class user extends Component {
           {postsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
-          {this.state.profile === null ? <p>Loading profile...</p> : <StaticProfile profile={this.state.profile} />}
+          {this.state.profile === null ? <ProfileSkeleton /> : <StaticProfile profile={this.state.profile} />}
         </Grid>
       </Grid>
     );
