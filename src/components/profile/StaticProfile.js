@@ -32,29 +32,33 @@ const StaticProfile = props => {
         <hr />
         <div className="profile-details">
           <MuiLink component={Link} to={`/users/${handle}`} color="secondary" variant="h5">
-            @{handle}
+            {handle}
           </MuiLink>
           <hr />
-          {bio && <Typography variant="body2">{bio}</Typography>}
+          {bio && (
+            <Typography variant="body" className={classes.whiteText}>
+              {bio}
+            </Typography>
+          )}
           <hr />
           {location && (
             <Fragment>
               {' '}
-              <LocationOn color="primary" />
-              <span>{location}</span> <hr />
+              <LocationOn className={classes.greyText} />
+              <span className={classes.greyText}>{location}</span> <hr />
             </Fragment>
           )}
           {website && (
             <Fragment>
-              <LinkIcon />
-              <a href={website} target="_blank" rel="noopener noreferrer">
+              <LinkIcon className={classes.greyText} />
+              <a href={website} target="_blank" rel="noopener noreferrer" className={classes.greyText}>
                 {'  '}
                 {website}
               </a>
               <hr />
             </Fragment>
           )}
-          <CalendarToday color="primary" /> <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
+          <CalendarToday className={classes.greyText} /> <span className={classes.greyText}>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
         </div>
       </div>
     </Paper>

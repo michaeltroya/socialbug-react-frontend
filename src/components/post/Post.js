@@ -11,6 +11,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 //Material UI Imports
 import Card from '@material-ui/core/Card';
+import Grid from '@material-ui/core/Grid';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
@@ -19,22 +20,18 @@ import ChatIcon from '@material-ui/icons/Chat';
 //Redux Imports
 import { connect } from 'react-redux';
 
-const styles = {
-  card: {
+const styles = theme => ({
+  ...theme.spreadIt,
+  leftProfilePic: {
     position: 'relative',
-    display: 'flex',
-    marginBottom: '2rem',
-    backgroundColor: '#444444'
+    width: '100%',
+    borderRadius: '50%'
   },
-  image: {
-    minWidth: 80,
-    width: 200
-  },
-  content: {
-    padding: '1rem',
-    objectFit: 'cover'
+  postBody: {
+    color: '#fff',
+    margin: '.6rem 0'
   }
-};
+});
 
 export class Post extends Component {
   render() {
@@ -49,31 +46,42 @@ export class Post extends Component {
     } = this.props;
 
     const likeOrLikes = likeCount === 1 ? 'like' : 'likes';
+    const commentOrComments = commentCount === 1 ? 'comment' : 'comments';
 
     const deleteButton = authenticated && userHandle === handle ? <DeletePost postId={postId} /> : null;
 
     return (
       <div>
         <Card className={classes.card}>
-          <CardMedia image={userImage} title="Profile Picture" className={classes.image} />
           <CardContent className={classes.content}>
-            <Typography variant="h5" color="secondary" component={Link} to={`/users/${userHandle}`}>
-              @{userHandle}
-            </Typography>
-            {deleteButton}
-            <Typography variant="body2" color="textSecondary">
-              {dayjs(createdAt).fromNow()}
-            </Typography>
-            <Typography variant="body1">{body}</Typography>
-            <LikePostButton postId={postId} />
-            <span>
-              {likeCount} {likeOrLikes}
-            </span>
-            <ToolButton tip="comments">
-              <ChatIcon color="secondary" />
-            </ToolButton>
-            <span>{commentCount} comments</span>
-            <PostDialog postId={postId} userHandle={userHandle} openDialog={this.props.openDialog} />
+            <Grid container spacing={3} direction="row" justify="center" alignItems="center">
+              <Grid item xs={3}>
+                <img src={userImage} alt="" className={classes.leftProfilePic} />
+              </Grid>{' '}
+              <Grid item xs={9}>
+                <Typography variant="h5" color="secondary" component={Link} to={`/users/${userHandle}`}>
+                  {userHandle}
+                </Typography>
+                {deleteButton}
+                <Typography variant="body2" className={classes.greyText}>
+                  {dayjs(createdAt).fromNow()}
+                </Typography>
+                <Typography variant="body1" className={classes.postBody}>
+                  {body}
+                </Typography>
+                <LikePostButton postId={postId} />
+                <span className={classes.whiteText}>
+                  {likeCount} {likeOrLikes}
+                </span>
+                <ToolButton tip="comments">
+                  <ChatIcon color="secondary" />
+                </ToolButton>
+                <span className={classes.whiteText}>
+                  {commentCount} {commentOrComments}
+                </span>
+                <PostDialog postId={postId} userHandle={userHandle} openDialog={this.props.openDialog} />
+              </Grid>
+            </Grid>
           </CardContent>
         </Card>
       </div>

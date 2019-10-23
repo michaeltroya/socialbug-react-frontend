@@ -32,13 +32,15 @@ class Comments extends Component {
                 <Grid item sm={9}>
                   <div className={classes.commentData}>
                     <Typography variant="h5" component={Link} to={`/users/${userHandle}`} color="secondary">
-                      @{userHandle}
+                      {userHandle}
                     </Typography>
-                    <Typography variant="body2" color="text-secondary">
+                    <Typography variant="body2" color="text-secondary" className={classes.greyText}>
                       {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
                     </Typography>
                     <hr className={classes.clearSeparator} />
-                    <Typography variant="body1">{body}</Typography>
+                    <Typography variant="body1" className={classes.whiteText}>
+                      {body}
+                    </Typography>
                   </div>
                 </Grid>
               </Grid>

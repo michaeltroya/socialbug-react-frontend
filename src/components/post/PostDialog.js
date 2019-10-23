@@ -31,7 +31,8 @@ const styles = theme => ({
     margin: '0 0 1rem 0'
   },
   dialogContent: {
-    padding: '1rem !important'
+    padding: '1rem !important',
+    backgroundColor: '#444444'
   },
   closeButton: {
     position: 'absolute',
@@ -95,7 +96,7 @@ class PostDialog extends Component {
       UI: { loading }
     } = this.props;
 
-    let likeOrLikes;
+    let likeOrLikes, commentOrComments;
 
     const dialogMarkup = loading ? (
       <div className={classes.spinner}>
@@ -109,22 +110,26 @@ class PostDialog extends Component {
           </Grid>
           <Grid item sm={7}>
             <Typography component={Link} color="secondary" variant="h5" to={`/users/${userHandle}`}>
-              @{userHandle}
+              {userHandle}
             </Typography>
             <hr className={classes.clearSeparator} />
-            <Typography variant="body2" color="textSecondary">
+            <Typography variant="body2" className={classes.greyText}>
               {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
             </Typography>
             <hr className={classes.clearSeparator} />
-            <Typography variant="body1">{body}</Typography>
+            <Typography variant="body1" className={classes.whiteText}>
+              {body}
+            </Typography>
             <LikePostButton postId={postId} />
-            <span>
+            <span className={classes.whiteText}>
               {likeCount} {(likeOrLikes = likeCount === 1 ? 'like' : 'likes')}
             </span>
             <ToolButton tip="comments">
               <ChatIcon color="secondary" />
             </ToolButton>
-            <span>{commentCount} comments</span>
+            <span className={classes.whiteText}>
+              {commentCount} {(commentOrComments = commentCount === 1 ? 'comment' : 'comments')}
+            </span>
           </Grid>
         </Grid>
 

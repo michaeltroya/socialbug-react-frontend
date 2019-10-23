@@ -66,7 +66,7 @@ class CommentForm extends Component {
               className={classes.TextField}
             />
 
-            <Button type="submit" variant="contained" color="primary" className={classes.submitButton}>
+            <Button type="submit" variant="contained" color="secondary" className={classes.submitButton}>
               Submit
             </Button>
           </form>

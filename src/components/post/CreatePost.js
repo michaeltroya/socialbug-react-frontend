@@ -30,6 +30,10 @@ const styles = theme => ({
     position: 'absolute',
     right: 0,
     top: 0
+  },
+  dialogBg: {
+    backgroundColor: '#444444',
+    color: '#fff'
   }
 });
 
@@ -92,8 +96,8 @@ class CreatePost extends Component {
           <ToolButton tip="Close" onClick={this.handleClose} tipClassName={classes.closeButton}>
             <CloseIcon />
           </ToolButton>
-          <DialogTitle>Create a new post</DialogTitle>
-          <DialogContent>
+          <DialogTitle className={classes.dialogBg}>Create a new post</DialogTitle>
+          <DialogContent className={classes.dialogBg}>
             <form onSubmit={this.handleSubmit}>
               <TextField
                 name="body"
@@ -108,7 +112,7 @@ class CreatePost extends Component {
                 onChange={this.handleChange}
                 fullWidth
               />
-              <Button type="submit" variant="contained" color="primary" className={classes.submitButton} disabled={loading}>
+              <Button type="submit" variant="contained" color="secondary" className={classes.submitButton} disabled={loading}>
                 Submit
                 {loading && <CircularProgress size={30} className={classes.progressSpinner} />}
               </Button>

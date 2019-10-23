@@ -14,9 +14,16 @@ export default {
     }
   },
   spreadIt: {
+    whiteText: {
+      color: '#fff'
+    },
+    greyText: {
+      color: '#949494'
+    },
     card: {
-      display: 'flex',
-      marginBottom: '2rem'
+      position: 'relative',
+      marginBottom: '2rem',
+      backgroundColor: '#444444'
     },
     cardContent: {
       width: '100%',
@@ -61,7 +68,8 @@ export default {
       margin: '.6rem 0'
     },
     pageTitle: {
-      margin: '.5rem 0'
+      margin: '.5rem 0',
+      color: '#fff'
     },
     textField: {
       margin: '.5rem 0'
