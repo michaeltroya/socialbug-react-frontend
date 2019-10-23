@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Post from '../components/post/Post';
 import StaticProfile from '../components/profile/StaticProfile';
+import PostSkeleton from '../util/PostSkeleton';
 //axios imports
 import axios from 'axios';
 //Material UI imports
@@ -42,7 +43,7 @@ class user extends Component {
     const { postIdParam } = this.state;
 
     const postsMarkup = loading ? (
-      <p> Loading ...</p>
+      <PostSkeleton />
     ) : posts === null ? (
       <p>No posts from this user</p>
     ) : !postIdParam ? (
