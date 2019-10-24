@@ -17,7 +17,7 @@ const styles = theme => ({
   ...theme.spreadIt,
   signupPaper: {
     backgroundColor: '#444444',
-    padding: '3rem 0'
+    padding: '3rem'
   },
   signupQuestion: {
     color: 'white',
@@ -137,7 +137,8 @@ class signup extends Component {
                 Signup {loading && <CircularProgress size={30} className={classes.progress} />}
               </Button>
               <div className={classes.signupQuestion}>
-                Already have an account ? <Link to="/login">Login Here</Link>
+                Already have an account? <br />
+                <Link to="/login">Login Here</Link>
               </div>
             </form>
           </Grid>
