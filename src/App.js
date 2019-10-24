@@ -14,6 +14,7 @@ import home from './pages/home';
 import login from './pages/login';
 import signup from './pages/signup';
 import user from './pages/user';
+import CreatedBy from './util/CreatedBy';
 //Redux imports
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -53,6 +54,7 @@ class App extends Component {
                 <Route exact path="/users/:handle" component={user} />
                 <Route exact path="/users/:handle/post/:postId" component={user} />
               </Switch>
+              <CreatedBy />
             </div>
           </Router>
         </MuiThemeProvider>

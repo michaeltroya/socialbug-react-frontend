@@ -37,3 +37,11 @@ a {
 .MuiFormLabel-root .Mui-Focused {
   color: #00b248 !important;
 }
+
+.MuiInputBase-inputMultiline {
+  color: white !important;
+}
+
+.MuiInputBase-input {
+  color: white !important;
+}
