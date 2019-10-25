@@ -16,18 +16,6 @@ const styles = theme => ({
     width: 60,
     backgroundColor: theme.palette.secondary.main,
     margin: '0 auto 1rem'
-  },
-  fullLine: {
-    height: 15,
-    backgroundColor: theme.palette.secondary.main,
-    width: '100%',
-    marginBottom: '1rem'
-  },
-  haldLine: {
-    height: 15,
-    backgroundColor: theme.palette.secondary.main,
-    width: '50%',
-    marginBottom: '1rem'
   }
 });
 const ProfileSkeleton = props => {

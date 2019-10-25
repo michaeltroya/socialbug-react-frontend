@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import NoImg from '../images/no-img.png';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 //Material UI Imports
@@ -8,8 +9,10 @@ import CardContent from '@material-ui/core/CardContent';
 
 const styles = theme => ({
   ...theme.spreadIt,
-  pic: {
-    backgroundColor: theme.palette.secondary.main
+  leftProfilePic: {
+    position: 'relative',
+    width: '80%',
+    borderRadius: '50%'
   }
 });
 const PostSkeleton = props => {
@@ -17,16 +20,18 @@ const PostSkeleton = props => {
   const content = Array.from({ length: 5 }).map((item, index) => (
     <Card className={classes.card} key={index}>
       <CardContent className={classes.cardContent}>
-        <Grid container direction="row" justify="center" alignItems="center">
-          <Grid item sm={3} xs={6}>
-            <div className={classes.pic} />
+        <Grid container alignItems="center">
+          <Grid item sm={3} xs={5}>
+            <img src={NoImg} alt="Profile" className="profile-image" className={classes.leftProfilePic} />
           </Grid>
-          <Grid item sm={9} xs={6}>
+          <Grid item sm={9} xs={5}>
             <div className={classes.handle} />
             <div className={classes.date} />
             <div className={classes.fullLine} />
             <div className={classes.fullLine} />
+            <div className={classes.fullLine} />
           </Grid>
+          <Grid item sm={9} xs={12}></Grid>
         </Grid>
       </CardContent>
     </Card>

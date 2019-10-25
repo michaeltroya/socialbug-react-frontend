@@ -55,7 +55,7 @@ export class Post extends Component {
           <CardContent className={classes.content}>
             <Grid container spacing={3} direction="row" justify="center" alignItems="center">
               <Grid item sm={3} xs={6}>
-                <img src={userImage} alt="" className={classes.leftProfilePic} />
+                <img src={userImage} alt="Profile" className={classes.leftProfilePic} />
               </Grid>
               <Grid item sm={9} xs={6}>
                 <Typography variant="h5" color="secondary" component={Link} to={`/users/${userHandle}`}>
