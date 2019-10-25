@@ -36,7 +36,7 @@ const StaticProfile = props => {
           </MuiLink>
           <hr />
           {bio && (
-            <Typography variant="body" className={classes.whiteText}>
+            <Typography variant="body1" className={classes.whiteText}>
               {bio}
             </Typography>
           )}

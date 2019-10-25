@@ -34,7 +34,7 @@ class Comments extends Component {
                     <Typography variant="h5" component={Link} to={`/users/${userHandle}`} color="secondary">
                       {userHandle}
                     </Typography>
-                    <Typography variant="body2" color="text-secondary" className={classes.greyText}>
+                    <Typography variant="body2" className={classes.greyText}>
                       {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
                     </Typography>
                     <hr className={classes.clearSeparator} />

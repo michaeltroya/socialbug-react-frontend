@@ -41,7 +41,7 @@ export default {
     handle: {
       width: 60,
       height: 17,
-      backgroundColor: '#76ff03',
+      backgroundColor: '#00e676',
       marginBottom: '.5rem'
     },
     date: {

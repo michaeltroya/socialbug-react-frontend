@@ -54,10 +54,10 @@ export class Post extends Component {
         <Card className={classes.card}>
           <CardContent className={classes.content}>
             <Grid container spacing={3} direction="row" justify="center" alignItems="center">
-              <Grid item xs={3}>
+              <Grid item sm={3} xs={6}>
                 <img src={userImage} alt="" className={classes.leftProfilePic} />
-              </Grid>{' '}
-              <Grid item xs={9}>
+              </Grid>
+              <Grid item sm={9} xs={6}>
                 <Typography variant="h5" color="secondary" component={Link} to={`/users/${userHandle}`}>
                   {userHandle}
                 </Typography>
@@ -68,17 +68,19 @@ export class Post extends Component {
                 <Typography variant="body1" className={classes.postBody}>
                   {body}
                 </Typography>
+                <PostDialog postId={postId} userHandle={userHandle} />
+              </Grid>
+              <Grid item sm={12} xs={12}>
                 <LikePostButton postId={postId} />
                 <span className={classes.whiteText}>
                   {likeCount} {likeOrLikes}
                 </span>
-                <ToolButton tip="comments">
+                <ToolButton tip="comments" onClick={this.handleCommentClick}>
                   <ChatIcon color="secondary" />
                 </ToolButton>
                 <span className={classes.whiteText}>
                   {commentCount} {commentOrComments}
                 </span>
-                <PostDialog postId={postId} userHandle={userHandle} openDialog={this.props.openDialog} />
               </Grid>
             </Grid>
           </CardContent>
