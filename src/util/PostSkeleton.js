@@ -22,7 +22,7 @@ const PostSkeleton = props => {
       <CardContent className={classes.cardContent}>
         <Grid container alignItems="center">
           <Grid item sm={3} xs={5}>
-            <img src={NoImg} alt="Profile" className="profile-image" className={classes.leftProfilePic} />
+            <img src={NoImg} alt="Profile" className={classes.leftProfilePic} />
           </Grid>
           <Grid item sm={9} xs={5}>
             <div className={classes.handle} />
