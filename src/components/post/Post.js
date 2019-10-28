@@ -33,6 +33,11 @@ const styles = theme => ({
 });
 
 export class Post extends Component {
+  handleCommentClick = () => {
+    const dialog = document.getElementById(this.props.post.postId);
+    dialog.click();
+  };
+
   render() {
     dayjs.extend(relativeTime);
     const {
@@ -75,7 +80,7 @@ export class Post extends Component {
                 <span className={classes.whiteText}>
                   {likeCount} {likeOrLikes}
                 </span>
-                <ToolButton tip="comments" onClick={this.handleCommentClick}>
+                <ToolButton tip="View comments" onClick={this.handleCommentClick} btnId={postId}>
                   <ChatIcon color="secondary" />
                 </ToolButton>
                 <span className={classes.whiteText}>

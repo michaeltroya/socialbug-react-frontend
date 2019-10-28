@@ -96,7 +96,8 @@ class PostDialog extends Component {
       UI: { loading }
     } = this.props;
 
-    let likeOrLikes, commentOrComments;
+    let likeOrLikes = likeCount === 1 ? 'like' : 'likes';
+    let commentOrComments = commentCount === 1 ? 'comment' : 'comments';
 
     const dialogMarkup = loading ? (
       <div className={classes.spinner}>
@@ -122,13 +123,13 @@ class PostDialog extends Component {
             </Typography>
             <LikePostButton postId={postId} />
             <span className={classes.whiteText}>
-              {likeCount} {(likeOrLikes = likeCount === 1 ? 'like' : 'likes')}
+              {likeCount} {likeOrLikes}
             </span>
             <ToolButton tip="comments">
               <ChatIcon color="secondary" />
             </ToolButton>
             <span className={classes.whiteText}>
-              {commentCount} {(commentOrComments = commentCount === 1 ? 'comment' : 'comments')}
+              {commentCount} {commentOrComments}
             </span>
           </Grid>
         </Grid>
@@ -139,7 +140,7 @@ class PostDialog extends Component {
     );
     return (
       <Fragment>
-        <ToolButton onClick={this.handleOpen} tip="View details" tipClassName={classes.expandButton}>
+        <ToolButton onClick={this.handleOpen} tip="View details" tipClassName={classes.expandButton} btnId={this.props.postId}>
           <UnfoldMore />
         </ToolButton>
         <Dialog open={this.state.open} onClose={this.handleClose} fullWidth maxWidth="sm">
